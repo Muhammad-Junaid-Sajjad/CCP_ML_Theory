@@ -18,37 +18,6 @@
 
 ---
 
-## 📜 ACADEMIC INTEGRITY NOTICE
-
-> **🎓 OFFICIAL UNIVERSITY SUBMISSION**
-> 
-> This project is an **official semester-end submission** for the 6th Semester BSCS Machine Learning course (CSE6505) at **Lahore Garrison University**, submitted by:
-> - **Junaid Sajjad** (Fa23-BSCS-054)
-> - **Saba Kausar** (Fa23-BSCS-063)
-> - **Reshail Ashraf** (Fa23-BSCS-068)
->
-> ### 🚫 Usage Restrictions
-> 
-> **This code is protected academic work.** Copying, reusing, or submitting this code (in whole or in part) as your own academic work constitutes **plagiarism** and violates academic integrity policies.
->
-> **Not Permitted:**
-> - Submitting this code for any university assignment or project
-> - Copying code without proper attribution
-> - Using this as a template for academic submissions
-> - Claiming this work as your own
->
-> ### ✅ Permitted Use
-> - Viewing for learning and educational purposes
-> - Understanding ML concepts and implementation techniques
-> - Using as a reference with proper citation
-> - Building upon this work for non-academic projects (with attribution)
->
-> **⚖️ Academic Integrity:** Violation can result in failing grades, academic probation, expulsion, or permanent record of misconduct.
->
-> **💡 For Students:** Use this project to learn and understand concepts, but write your own code. Universities use plagiarism detection tools.
-
----
-
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
@@ -821,6 +790,51 @@ For questions, feedback, or collaboration:
 ## ⭐ Star This Repository
 
 If you found this project helpful for learning Machine Learning concepts, please consider giving it a star! ⭐
+
+---
+
+## 📜 Academic Integrity Notice
+
+<details>
+<summary><b>⚖️ Important: Usage Restrictions & Academic Integrity</b></summary>
+
+<br>
+
+> **🎓 OFFICIAL UNIVERSITY SUBMISSION**
+> 
+> This project is an **official semester-end submission** for the 6th Semester BSCS Machine Learning course (CSE6505) at **Lahore Garrison University**, submitted by:
+> - **Junaid Sajjad** (Fa23-BSCS-054)
+> - **Saba Kausar** (Fa23-BSCS-063)
+> - **Reshail Ashraf** (Fa23-BSCS-068)
+
+### 🚫 Usage Restrictions
+
+**This code is protected academic work.** Copying, reusing, or submitting this code (in whole or in part) as your own academic work constitutes **plagiarism** and violates academic integrity policies.
+
+**Not Permitted:**
+- Submitting this code for any university assignment or project
+- Copying code without proper attribution
+- Using this as a template for academic submissions
+- Claiming this work as your own
+
+### ✅ Permitted Use
+
+- Viewing for learning and educational purposes
+- Understanding ML concepts and implementation techniques
+- Using as a reference with proper citation
+- Building upon this work for non-academic projects (with attribution)
+
+### ⚖️ Consequences
+
+Violation of academic integrity can result in:
+- Failing grades
+- Academic probation
+- Expulsion from university
+- Permanent record of academic misconduct
+
+**💡 For Students:** Use this project to learn and understand concepts, but write your own code. Universities use plagiarism detection tools.
+
+</details>
 
 ---
 
