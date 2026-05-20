@@ -18,6 +18,16 @@
 
 ---
 
+<div align="center">
+
+![CKD Prediction System - Web Interface](screenshots/main-page.png)
+
+*Professional web interface for real-time Chronic Kidney Disease prediction*
+
+</div>
+
+---
+
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
