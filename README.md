@@ -18,7 +18,7 @@
 
 ---
 
-## ⚠️ ACADEMIC INTEGRITY WARNING
+## 📜 ACADEMIC INTEGRITY NOTICE
 
 > **🎓 OFFICIAL UNIVERSITY SUBMISSION**
 > 
@@ -27,25 +27,25 @@
 > - **Saba Kausar** (Fa23-BSCS-063)
 > - **Reshail Ashraf** (Fa23-BSCS-068)
 >
-> ### ❌ PROHIBITED USE:
-> **Copying, reusing, or submitting this code (in whole or in part) as your own academic work constitutes PLAGIARISM and violates academic integrity policies.**
+> ### 🚫 Usage Restrictions
+> 
+> **This code is protected academic work.** Copying, reusing, or submitting this code (in whole or in part) as your own academic work constitutes **plagiarism** and violates academic integrity policies.
 >
-> This includes:
-> - ❌ Submitting this code for any university assignment or project
-> - ❌ Copying code without proper attribution
-> - ❌ Using this as a template for academic submissions
-> - ❌ Claiming this work as your own
+> **Not Permitted:**
+> - Submitting this code for any university assignment or project
+> - Copying code without proper attribution
+> - Using this as a template for academic submissions
+> - Claiming this work as your own
 >
-> ### ✅ PERMITTED USE:
-> - ✅ Viewing for learning and educational purposes
-> - ✅ Understanding ML concepts and implementation techniques
-> - ✅ Using as a reference with proper citation
-> - ✅ Building upon this work for non-academic projects (with attribution)
+> ### ✅ Permitted Use
+> - Viewing for learning and educational purposes
+> - Understanding ML concepts and implementation techniques
+> - Using as a reference with proper citation
+> - Building upon this work for non-academic projects (with attribution)
 >
-> **Violation of academic integrity can result in:**
-> - Failing grades • Academic probation • Expulsion from university • Permanent record of academic misconduct
+> **⚖️ Academic Integrity:** Violation can result in failing grades, academic probation, expulsion, or permanent record of misconduct.
 >
-> **If you are a student:** Use this project to learn, but write your own code. Your university has plagiarism detection tools.
+> **💡 For Students:** Use this project to learn and understand concepts, but write your own code. Universities use plagiarism detection tools.
 
 ---
 
@@ -146,6 +146,14 @@ Chronic Kidney Disease affects **850+ million people worldwide** and is the **10
 ## 🎬 Live Demo
 
 ### Web Interface
+
+<div align="center">
+
+![CKD Prediction System - Web Interface](screenshots/main-page.png)
+
+*Professional web interface for Chronic Kidney Disease prediction*
+
+</div>
 
 The system provides a professional web interface for easy CKD prediction:
 
