@@ -124,15 +124,7 @@ Chronic Kidney Disease affects **850+ million people worldwide** and is the **10
 
 ## 🎬 Live Demo
 
-### Web Interface
-
-<div align="center">
-
-![CKD Prediction System - Web Interface](screenshots/main-page.png)
-
-*Professional web interface for Chronic Kidney Disease prediction*
-
-</div>
+### Web Interface Features
 
 The system provides a professional web interface for easy CKD prediction:
 
