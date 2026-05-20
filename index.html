@@ -477,6 +477,166 @@ nav button.active{
   background:#fff;
 }
 
+/* ================= DISCLAIMER ================= */
+
+.disclaimer{
+  background:rgba(255,200,100,.12);
+  border:1px solid rgba(255,200,100,.3);
+  border-radius:16px;
+  padding:16px 24px;
+  margin-bottom:30px;
+  display:flex;
+  gap:16px;
+  align-items:start;
+}
+
+.disclaimer-icon{
+  font-size:1.5rem;
+  flex-shrink:0;
+}
+
+.disclaimer-text{
+  font-size:.9rem;
+  line-height:1.6;
+  color:#ffd89a;
+}
+
+.disclaimer-text strong{
+  color:#ffe4b3;
+}
+
+/* ================= SAMPLE DATA BUTTONS ================= */
+
+.sample-buttons{
+  display:flex;
+  gap:12px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+
+.btn-sample{
+  padding:10px 18px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  font-size:.88rem;
+  cursor:pointer;
+  transition:.25s;
+  font-weight:500;
+}
+
+.btn-sample:hover{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.25);
+  transform:translateY(-2px);
+}
+
+.btn-sample.danger{
+  border-color:rgba(255,100,100,.3);
+  background:rgba(255,100,100,.08);
+  color:#ffb3b3;
+}
+
+.btn-sample.success{
+  border-color:rgba(100,255,150,.3);
+  background:rgba(100,255,150,.08);
+  color:#b3ffd0;
+}
+
+.btn-sample.clear{
+  border-color:rgba(255,255,255,.2);
+}
+
+/* ================= TOOLTIPS ================= */
+
+.field{
+  position:relative;
+}
+
+.tooltip{
+  position:absolute;
+  bottom:100%;
+  left:0;
+  background:rgba(20,10,10,.98);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:12px;
+  padding:12px 16px;
+  font-size:.82rem;
+  line-height:1.5;
+  color:#d9c1bb;
+  width:280px;
+  z-index:1000;
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+  margin-bottom:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.5);
+}
+
+.field:hover .tooltip{
+  opacity:1;
+}
+
+.tooltip-title{
+  color:#ffcabf;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.tooltip-range{
+  color:#7dffb2;
+  font-size:.78rem;
+}
+
+/* ================= VALIDATION ================= */
+
+.field input.valid,
+.field select.valid{
+  border-color:rgba(125,255,178,.4);
+  background:rgba(125,255,178,.05);
+}
+
+.field input.invalid,
+.field select.invalid{
+  border-color:rgba(255,100,100,.4);
+  background:rgba(255,100,100,.05);
+}
+
+.field-error{
+  color:#ff9999;
+  font-size:.78rem;
+  margin-top:4px;
+  display:none;
+}
+
+.field input.invalid ~ .field-error,
+.field select.invalid ~ .field-error{
+  display:block;
+}
+
+/* ================= FORM PROGRESS ================= */
+
+.form-progress{
+  background:rgba(255,255,255,.05);
+  border-radius:12px;
+  padding:12px 18px;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.88rem;
+}
+
+.progress-text{
+  color:var(--muted);
+}
+
+.progress-count{
+  color:var(--success);
+  font-weight:600;
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:980px){
@@ -493,6 +653,10 @@ nav button.active{
   .hero-image{
     max-width:320px;
     margin:auto;
+  }
+
+  .tooltip{
+    width:220px;
   }
 }
 
@@ -575,6 +739,16 @@ nav button.active{
 
   </div>
 
+  <!-- MEDICAL DISCLAIMER -->
+  <div class="disclaimer">
+    <div class="disclaimer-icon">⚠️</div>
+    <div class="disclaimer-text">
+      <strong>Medical Disclaimer:</strong> This tool is for educational and research purposes only.
+      It is NOT a substitute for professional medical diagnosis or treatment.
+      Always consult qualified healthcare professionals for medical advice.
+    </div>
+  </div>
+
   <div class="form-wrapper">
 
     <div class="form-header">
@@ -583,6 +757,25 @@ nav button.active{
     </div>
 
     <div class="form-body">
+
+      <!-- SAMPLE DATA BUTTONS -->
+      <div class="sample-buttons">
+        <button class="btn-sample danger" onclick="fillSampleData('high')">
+          📊 High Risk Sample
+        </button>
+        <button class="btn-sample success" onclick="fillSampleData('healthy')">
+          ✅ Healthy Sample
+        </button>
+        <button class="btn-sample clear" onclick="clearForm()">
+          🗑️ Clear Form
+        </button>
+      </div>
+
+      <!-- FORM PROGRESS -->
+      <div class="form-progress">
+        <span class="progress-text">Form Completion</span>
+        <span class="progress-count" id="progress-count">0/24 fields</span>
+      </div>
 
       <!-- NUMERIC -->
 
@@ -786,33 +979,33 @@ nav button.active{
 /* ================= FEATURES ================= */
 
 const NUMERIC_FIELDS = [
-  {key:"age",label:"Age"},
-  {key:"bp",label:"Blood Pressure"},
-  {key:"sg",label:"Specific Gravity"},
-  {key:"al",label:"Albumin"},
-  {key:"su",label:"Sugar"},
-  {key:"bgr",label:"Blood Glucose"},
-  {key:"bu",label:"Blood Urea"},
-  {key:"sc",label:"Serum Creatinine"},
-  {key:"sod",label:"Sodium"},
-  {key:"pot",label:"Potassium"},
-  {key:"hemo",label:"Hemoglobin"},
-  {key:"pcv",label:"Packed Cell Volume"},
-  {key:"wbcc",label:"WBC Count"},
-  {key:"rbcc",label:"RBC Count"},
+  {key:"age",label:"Age",range:"20-100 years",info:"Patient's age in years"},
+  {key:"bp",label:"Blood Pressure",range:"50-200 mm/Hg",info:"Diastolic blood pressure"},
+  {key:"sg",label:"Specific Gravity",range:"1.005-1.025",info:"Urine specific gravity"},
+  {key:"al",label:"Albumin",range:"0-5",info:"Albumin level in urine"},
+  {key:"su",label:"Sugar",range:"0-5",info:"Sugar level in urine"},
+  {key:"bgr",label:"Blood Glucose",range:"70-200 mg/dL",info:"Random blood glucose level"},
+  {key:"bu",label:"Blood Urea",range:"10-150 mg/dL",info:"Blood urea nitrogen (normal: 10-50)"},
+  {key:"sc",label:"Serum Creatinine",range:"0.5-15 mg/dL",info:"Serum creatinine (normal: 0.6-1.2)"},
+  {key:"sod",label:"Sodium",range:"100-180 mEq/L",info:"Sodium level (normal: 135-145)"},
+  {key:"pot",label:"Potassium",range:"2-10 mEq/L",info:"Potassium level (normal: 3.5-5.5)"},
+  {key:"hemo",label:"Hemoglobin",range:"3-20 gms",info:"Hemoglobin level (normal: 12-17)"},
+  {key:"pcv",label:"Packed Cell Volume",range:"10-60",info:"PCV percentage (normal: 36-48)"},
+  {key:"wbcc",label:"WBC Count",range:"2000-20000 cells/cumm",info:"White blood cell count (normal: 4000-11000)"},
+  {key:"rbcc",label:"RBC Count",range:"2-8 millions/cmm",info:"Red blood cell count (normal: 4.5-6.0)"},
 ];
 
 const CATEGORICAL_FIELDS = [
-  {key:"rbc",label:"Red Blood Cells",opts:["normal","abnormal"]},
-  {key:"pc",label:"Pus Cell",opts:["normal","abnormal"]},
-  {key:"pcc",label:"Pus Cell Clumps",opts:["present","notpresent"]},
-  {key:"ba",label:"Bacteria",opts:["present","notpresent"]},
-  {key:"htn",label:"Hypertension",opts:["yes","no"]},
-  {key:"dm",label:"Diabetes Mellitus",opts:["yes","no"]},
-  {key:"cad",label:"Coronary Artery Disease",opts:["yes","no"]},
-  {key:"appet",label:"Appetite",opts:["good","poor"]},
-  {key:"pe",label:"Pedal Edema",opts:["yes","no"]},
-  {key:"ane",label:"Anemia",opts:["yes","no"]},
+  {key:"rbc",label:"Red Blood Cells",opts:["normal","abnormal"],info:"Presence of RBCs in urine"},
+  {key:"pc",label:"Pus Cell",opts:["normal","abnormal"],info:"Pus cells in urine"},
+  {key:"pcc",label:"Pus Cell Clumps",opts:["present","notpresent"],info:"Clumps of pus cells"},
+  {key:"ba",label:"Bacteria",opts:["present","notpresent"],info:"Bacterial presence in urine"},
+  {key:"htn",label:"Hypertension",opts:["yes","no"],info:"History of high blood pressure"},
+  {key:"dm",label:"Diabetes Mellitus",opts:["yes","no"],info:"History of diabetes"},
+  {key:"cad",label:"Coronary Artery Disease",opts:["yes","no"],info:"History of heart disease"},
+  {key:"appet",label:"Appetite",opts:["good","poor"],info:"Patient's appetite status"},
+  {key:"pe",label:"Pedal Edema",opts:["yes","no"],info:"Swelling in feet/ankles"},
+  {key:"ane",label:"Anemia",opts:["yes","no"],info:"Low red blood cell count"},
 ];
 
 /* ================= BUILD FORM ================= */
@@ -826,7 +1019,13 @@ function buildFields(){
     numWrap.innerHTML += `
       <div class="field">
         <label>${f.label}</label>
-        <input type="number" placeholder="Enter ${f.label}">
+        <input type="number" placeholder="Enter ${f.label}" oninput="validateAndUpdateProgress()">
+        <div class="tooltip">
+          <div class="tooltip-title">${f.label}</div>
+          <div>${f.info}</div>
+          <div class="tooltip-range">Normal range: ${f.range}</div>
+        </div>
+        <div class="field-error">Please enter a valid value</div>
       </div>
     `;
 
@@ -839,10 +1038,15 @@ function buildFields(){
     catWrap.innerHTML += `
       <div class="field">
         <label>${f.label}</label>
-        <select>
+        <select onchange="validateAndUpdateProgress()">
           <option>Select</option>
           ${f.opts.map(o=>`<option>${o}</option>`).join('')}
         </select>
+        <div class="tooltip">
+          <div class="tooltip-title">${f.label}</div>
+          <div>${f.info}</div>
+        </div>
+        <div class="field-error">Please select an option</div>
       </div>
     `;
 
@@ -851,6 +1055,95 @@ function buildFields(){
 }
 
 buildFields();
+
+/* ================= SAMPLE DATA ================= */
+
+function fillSampleData(type){
+
+  if(type === 'high'){
+    // High Risk CKD Patient
+    const highRiskData = {
+      numeric: [65, 90, 1.010, 4, 3, 180, 85, 4.5, 135, 5.5, 9.5, 30, 9000, 3.8],
+      categorical: ['abnormal', 'abnormal', 'present', 'present', 'yes', 'yes', 'no', 'poor', 'yes', 'yes']
+    };
+
+    const numInputs = document.querySelectorAll('#numeric-fields input');
+    highRiskData.numeric.forEach((val, idx) => {
+      if(numInputs[idx]) numInputs[idx].value = val;
+    });
+
+    const selects = document.querySelectorAll('#categorical-fields select');
+    highRiskData.categorical.forEach((val, idx) => {
+      if(selects[idx]) selects[idx].value = val;
+    });
+
+  } else if(type === 'healthy'){
+    // Healthy Patient
+    const healthyData = {
+      numeric: [35, 70, 1.020, 0, 0, 95, 30, 0.9, 140, 4.5, 15, 42, 7500, 5.0],
+      categorical: ['normal', 'normal', 'notpresent', 'notpresent', 'no', 'no', 'no', 'good', 'no', 'no']
+    };
+
+    const numInputs = document.querySelectorAll('#numeric-fields input');
+    healthyData.numeric.forEach((val, idx) => {
+      if(numInputs[idx]) numInputs[idx].value = val;
+    });
+
+    const selects = document.querySelectorAll('#categorical-fields select');
+    healthyData.categorical.forEach((val, idx) => {
+      if(selects[idx]) selects[idx].value = val;
+    });
+  }
+
+  validateAndUpdateProgress();
+}
+
+function clearForm(){
+  document.querySelectorAll('#numeric-fields input').forEach(input => {
+    input.value = '';
+    input.classList.remove('valid', 'invalid');
+  });
+
+  document.querySelectorAll('#categorical-fields select').forEach(select => {
+    select.value = 'Select';
+    select.classList.remove('valid', 'invalid');
+  });
+
+  document.getElementById('result-section').innerHTML = '';
+  validateAndUpdateProgress();
+}
+
+/* ================= VALIDATION & PROGRESS ================= */
+
+function validateAndUpdateProgress(){
+  let filledCount = 0;
+  const totalFields = 24;
+
+  // Validate numeric fields
+  document.querySelectorAll('#numeric-fields input').forEach(input => {
+    if(input.value.trim() !== ''){
+      input.classList.add('valid');
+      input.classList.remove('invalid');
+      filledCount++;
+    } else {
+      input.classList.remove('valid', 'invalid');
+    }
+  });
+
+  // Validate categorical fields
+  document.querySelectorAll('#categorical-fields select').forEach(select => {
+    if(select.value !== 'Select'){
+      select.classList.add('valid');
+      select.classList.remove('invalid');
+      filledCount++;
+    } else {
+      select.classList.remove('valid', 'invalid');
+    }
+  });
+
+  // Update progress
+  document.getElementById('progress-count').textContent = `${filledCount}/${totalFields} fields`;
+}
 
 /* ================= TABS ================= */
 
@@ -873,27 +1166,64 @@ function showTab(name,btn){
 
 async function submitForm(){
 
+  // Validate all fields before submission
+  let hasErrors = false;
   const data = {};
 
+  // Validate numeric fields
   document.querySelectorAll("#numeric-fields .field").forEach((field, idx) => {
     const input = field.querySelector("input");
-    if (input) data[NUMERIC_FIELDS[idx].key] = input.value.trim();
-  });
+    const value = input.value.trim();
 
-  document.querySelectorAll("#categorical-fields .field").forEach((field, idx) => {
-    const select = field.querySelector("select");
-    if (select) {
-      data[CATEGORICAL_FIELDS[idx].key] = select.value === "Select" ? "" : select.value;
+    if (value === '') {
+      input.classList.add('invalid');
+      input.classList.remove('valid');
+      hasErrors = true;
+    } else {
+      input.classList.add('valid');
+      input.classList.remove('invalid');
+      data[NUMERIC_FIELDS[idx].key] = value;
     }
   });
+
+  // Validate categorical fields
+  document.querySelectorAll("#categorical-fields .field").forEach((field, idx) => {
+    const select = field.querySelector("select");
+    const value = select.value;
+
+    if (value === "Select") {
+      select.classList.add('invalid');
+      select.classList.remove('valid');
+      hasErrors = true;
+    } else {
+      select.classList.add('valid');
+      select.classList.remove('invalid');
+      data[CATEGORICAL_FIELDS[idx].key] = value;
+    }
+  });
+
+  // Show error if validation fails
+  if(hasErrors){
+    const resultSection = document.getElementById("result-section");
+    resultSection.innerHTML = `
+      <div class="result-card ckd">
+        <div class="result-icon">⚠️</div>
+        <div>
+          <div class="result-label">Incomplete Form</div>
+          <div class="result-sub">Please fill all 24 clinical parameters before submitting.</div>
+        </div>
+      </div>
+    `;
+    return;
+  }
 
   const resultSection = document.getElementById("result-section");
   resultSection.innerHTML = `
     <div class="result-card loading">
       <div class="result-icon">⏳</div>
       <div>
-        <div class="result-label">Predicting...</div>
-        <div class="result-sub">Please wait while we calculate your risk.</div>
+        <div class="result-label">Analyzing...</div>
+        <div class="result-sub">Processing 24 clinical parameters with ensemble ML models...</div>
       </div>
     </div>
   `;
@@ -960,7 +1290,7 @@ async function submitForm(){
       <div class="result-card ckd">
         <div class="result-icon">⚠️</div>
         <div>
-          <div class="result-label">Unable to predict</div>
+          <div class="result-label">Prediction Error</div>
           <div class="result-sub">${error.message}</div>
         </div>
       </div>
