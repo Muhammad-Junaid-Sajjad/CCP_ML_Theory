@@ -50,12 +50,12 @@
 
 ## 🌟 Overview
 
-An advanced **Machine Learning system** that predicts **Chronic Kidney Disease (CKD)** with **100% accuracy** using ensemble learning algorithms. This project demonstrates the power of ML in medical diagnosis and provides a practical, user-friendly tool for early CKD detection.
+An advanced **Machine Learning system** that predicts **Chronic Kidney Disease (CKD)** with **100% accuracy** (Random Forest model) using ensemble learning algorithms. This project demonstrates the power of ML in medical diagnosis and provides a practical, user-friendly tool for early CKD detection.
 
 ### 🎯 Key Highlights
 
-- 🏆 **100% Accuracy** on test set (80 samples)
-- 🤖 **5 Ensemble Models** working in harmony
+- 🏆 **100% Accuracy** achieved by Random Forest model on test set (80 samples)
+- 🤖 **5 Ensemble Models** with 98.75-100% accuracy range
 - 📊 **Advanced Preprocessing** with MICE, SMOTE, and RFE
 - 🌐 **Professional Web Interface** with real-time validation
 - ⚡ **Instant Predictions** in < 1 second
@@ -231,17 +231,17 @@ ccp-ML-theory/
 
 ### Performance Metrics
 
-All five ensemble models achieved **perfect classification** on the test set:
+Five ensemble models were trained and evaluated on the test set:
 
 | Model | Accuracy | Precision | Recall | F1-Score | AUC-ROC | Training Time |
 |-------|----------|-----------|--------|----------|---------|---------------|
-| **Random Forest** ⭐ | **100%** | **1.00** | **1.00** | **1.00** | **1.00** | ~8s |
-| Gradient Boosting | 100% | 1.00 | 1.00 | 1.00 | 1.00 | ~12s |
-| AdaBoost | 100% | 1.00 | 1.00 | 1.00 | 1.00 | ~5s |
-| Voting Classifier | 100% | 1.00 | 1.00 | 1.00 | 1.00 | ~15s |
-| Stacking Classifier | 100% | 1.00 | 1.00 | 1.00 | 1.00 | ~25s |
+| **Random Forest** ⭐ | **100%** | **1.00** | **1.00** | **1.00** | **1.00** | **3.5s** |
+| Gradient Boosting | 98.75% | 1.00 | 0.98 | 0.99 | 0.999 | 1.9s |
+| AdaBoost | 98.75% | 1.00 | 0.98 | 0.99 | 1.00 | 1.3s |
+| Voting Classifier | 98.75% | 1.00 | 0.98 | 0.99 | 1.00 | 6.8s |
+| Stacking Classifier | 98.75% | 1.00 | 0.98 | 0.99 | 1.00 | 40.5s |
 
-⭐ **Random Forest** selected as best model for deployment
+⭐ **Random Forest** achieved perfect 100% accuracy and was selected as the best model for deployment
 
 ### Cross-Validation Results
 
@@ -249,22 +249,31 @@ All five ensemble models achieved **perfect classification** on the test set:
 
 | Model | Mean Accuracy | Std Deviation |
 |-------|---------------|---------------|
-| Random Forest | 99.8% | ±0.2% |
-| Gradient Boosting | 99.6% | ±0.3% |
-| AdaBoost | 99.4% | ±0.4% |
-| Voting | 99.7% | ±0.2% |
-| Stacking | 99.8% | ±0.2% |
+| Random Forest | 99.75% | ±0.2% |
+| AdaBoost | 99.5% | ±0.4% |
+| Voting | 99.0% | ±0.2% |
+| Stacking | 99.0% | ±0.2% |
+| Gradient Boosting | 98.25% | ±0.3% |
 
-### Confusion Matrix (Random Forest)
+### Confusion Matrix
 
+**Random Forest (Perfect Classification):**
 ```
                 Predicted
                 CKD    Non-CKD
 Actual  CKD     50     0
         Non-CKD 0      30
 ```
-
 **Perfect Classification:** TP=50, TN=30, FP=0, FN=0
+
+**Other Models (Gradient Boosting, AdaBoost, Voting, Stacking):**
+```
+                Predicted
+                CKD    Non-CKD
+Actual  CKD     49     1
+        Non-CKD 0      30
+```
+**Near-Perfect:** TP=49, TN=30, FP=0, FN=1 (one false negative)
 
 ---
 
@@ -307,19 +316,19 @@ Histograms for all 11 numeric features showing distribution shapes, outliers, an
 
 ![Model Comparison](static/plots/model_comparison.png)
 
-Bar chart comparing accuracy of all 5 ensemble models. All achieved 100% accuracy, validating the ensemble approach.
+Bar chart comparing accuracy of all 5 ensemble models. Random Forest achieved perfect 100% accuracy, while other ensemble models achieved excellent 98.75% accuracy, demonstrating the effectiveness of the ensemble approach.
 
 ### 6. Confusion Matrices
 
 ![Confusion Matrices](static/plots/confusion_matrices.png)
 
-Confusion matrices for all 5 models showing perfect classification with zero false positives and false negatives.
+Confusion matrices for all 5 models. Random Forest shows perfect classification with zero false positives and false negatives. Other ensemble models show near-perfect performance with only one false negative each, demonstrating excellent predictive capability.
 
 ### 7. Cross-Validation Accuracy
 
 ![CV Accuracy](static/plots/cv_accuracy.png)
 
-Box plot showing 5-fold cross-validation accuracy distribution. Mean: 99.4-99.8%, confirming excellent generalization.
+Box plot showing 5-fold cross-validation accuracy distribution. Random Forest leads with 99.75% mean accuracy, followed by AdaBoost (99.5%), Voting and Stacking (99.0%), and Gradient Boosting (98.25%), confirming excellent generalization across all models.
 
 ### 8. Feature Importance
 
@@ -342,12 +351,12 @@ ROC curves for all 5 models. All achieve AUC-ROC = 1.0 (perfect discrimination a
 
 ![Execution Time](static/plots/execution_time.png)
 
-Training time comparison:
-- **AdaBoost**: ~5s (fastest)
-- **Random Forest**: ~8s
-- **Gradient Boosting**: ~12s
-- **Voting**: ~15s
-- **Stacking**: ~25s (slowest, due to meta-learner)
+Training time comparison (actual measured times):
+- **AdaBoost**: 1.3s (fastest)
+- **Gradient Boosting**: 1.9s
+- **Random Forest**: 3.5s
+- **Voting**: 6.8s
+- **Stacking**: 40.5s (slowest, due to meta-learner training)
 
 ---
 
@@ -583,10 +592,10 @@ All 17 CCP requirements met (100%):
 | 5 | Class Balancing | Borderline-SMOTE | ✅ |
 | 6 | Feature Selection | RFE (24→12) | ✅ |
 | 7 | Random Forest | 100% accuracy | ✅ |
-| 8 | Gradient Boosting | 100% accuracy | ✅ |
-| 9 | AdaBoost | 100% accuracy | ✅ |
-| 10 | Voting Classifier | 100% accuracy | ✅ |
-| 11 | Stacking Classifier | 100% accuracy | ✅ |
+| 8 | Gradient Boosting | 98.75% accuracy | ✅ |
+| 9 | AdaBoost | 98.75% accuracy | ✅ |
+| 10 | Voting Classifier | 98.75% accuracy | ✅ |
+| 11 | Stacking Classifier | 98.75% accuracy | ✅ |
 | 12 | Model Comparison | 5 models compared | ✅ |
 | 13 | Cross-Validation | 5-fold CV | ✅ |
 | 14 | Performance Metrics | Acc, Prec, Rec, F1, AUC | ✅ |
